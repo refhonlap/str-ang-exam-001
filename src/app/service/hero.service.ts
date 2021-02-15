@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Hero } from '';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Hero } from '../model/hero';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
 
-  jsonUrl: string = "http://localhost:3000/heroes"
+  private heroes: Hero[] = [
+    {id: 1, name: "Snailman", adress: "Paris", superpower: "super slow-motion"},
+    {id: 2, name: "Explosito", adress: "Mexico City", superpower: "can exploding"},
+    {id: 3, name: "Jacky Darko", adress: "Sin City", superpower: "invisibility in the dark"},
+    {id: 4, name: "Randoman", adress: "New York", superpower: "50% chance bulletproof"},
+    {id: 5, name: "Mr. Blindspeed", adress: "Monaco", superpower: "superspeed with closed eyes"}
+  ];
 
-  constructor(private http: HttpClient) { }
+  list$: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>([]);
 
-  getAll(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.jsonUrl);
+  constructor() { }
+
+  getAll(): void {
+    return this.list$.next(this.list);
   }
 }
