@@ -15,11 +15,12 @@ export class HeroService {
     {id: 5, name: "Mr. Blindspeed", adress: "Monaco", superpower: "superspeed with closed eyes"}
   ];
 
-  list$: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>([]);
+  heroes$: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>([]);
 
   constructor() { }
 
   getAll(): void {
-    return this.list$.next(this.list);
+    console.log(this.heroes);
+    return this.heroes$.next(this.heroes);
   }
 }

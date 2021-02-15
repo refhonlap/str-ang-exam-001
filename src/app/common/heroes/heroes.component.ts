@@ -12,13 +12,13 @@ import { HeroService } from 'src/app/service/hero.service';
 export class HeroesComponent implements OnInit {
 
   heroesList$: BehaviorSubject<Hero[]> = 
-    this.heroService.list$;
+    this.heroService.heroes$;
 
   constructor(
     private heroService: HeroService,
   ) { }
 
   ngOnInit(): void {
+    this.heroService.getAll();
   }
-
 }

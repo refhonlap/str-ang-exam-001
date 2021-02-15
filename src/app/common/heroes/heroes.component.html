@@ -11,11 +11,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let Hero of HeroList$ | async">
-                        <td>{{ hero.id }}</td>
-                        <td>{{ hero.name }}</td>
-                        <td>{{ hero.adress }}</td>
-                        <td>{{ hero.superpower }}</td>
+                    <tr *ngFor="let heroes of heroesList$ | async">
+                        <td>{{ heroes.id }}</td>
+                        <td>{{ heroes.name }}</td>
+                        <td>{{ heroes.adress }}</td>
+                        <td>{{ heroes.superpower }}</td>
                     </tr>
                 </tbody>
             </table>
